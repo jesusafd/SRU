@@ -14,6 +14,9 @@ func Handler() {
 	router := mux.NewRouter()
 
 	router.HandleFunc("/user", middlewares.CheckDB(routes.InsertUser)).Methods("POST")
+	router.HandleFunc("/user", middlewares.CheckDB(routes.ReadUser)).Methods("GET")
+	router.HandleFunc("/user", middlewares.CheckDB(routes.UpdateUser)).Methods("PUT")
+	router.HandleFunc("/user", middlewares.CheckDB(routes.ReadUser)).Methods("GET")
 
 	PORT := "8080"
 
