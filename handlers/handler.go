@@ -16,7 +16,7 @@ func Handler() {
 	router.HandleFunc("/user", middlewares.CheckDB(routes.InsertUser)).Methods("POST")
 	router.HandleFunc("/user", middlewares.CheckDB(routes.ReadUser)).Methods("GET")
 	router.HandleFunc("/user", middlewares.CheckDB(routes.UpdateUser)).Methods("PUT")
-	router.HandleFunc("/user", middlewares.CheckDB(routes.ReadUser)).Methods("GET")
+	router.HandleFunc("/user", middlewares.CheckDB(routes.DeleteUser)).Methods("DELETE")
 
 	PORT := "8080"
 
