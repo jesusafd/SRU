@@ -19,6 +19,8 @@ func UpdateUser(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, "Error del servidor : "+err.Error(), http.StatusConflict)
 		return
 	}
+	// Usamos el email extraido del token
+	u.Email = Email
 	// verificamos que exista un registro con el mismo correo
 	_, err = connections.Read(u.Email)
 	if err != nil {

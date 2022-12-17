@@ -10,7 +10,7 @@ import (
 
 func ReadUser(w http.ResponseWriter, r *http.Request) {
 	// Extraemos el email de la url
-	email := r.URL.Query().Get("email")
+	email := Email
 
 	u, err := connections.Read(email)
 	if email == "" {

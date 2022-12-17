@@ -24,6 +24,13 @@ func InsertUser(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, "Error, Todos los datos son requeridos : "+err.Error(), http.StatusConflict)
 		return
 	}
+	// verificamos que no exista un registro con el mismo correo
+	_, err = connections.Read(u.Email)
+	if err == nil {
+		log.Println("Error al insertar registro, usuario ya existe")
+		http.Error(w, "Error al insertar registro, usuario ya existe", http.StatusConflict)
+		return
+	}
 	// Insertamos el registro en la bd
 	err = connections.Create(u)
 	// Verificamos si la inserccion fue exitosa
